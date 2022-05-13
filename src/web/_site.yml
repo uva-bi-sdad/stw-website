@@ -1,4 +1,6 @@
 name: "my-website"
+output_dir: "../../docs"
+exclude: ["*.nb.html", "*.csv", "*.CSV", "*.dcf", "parlog", "old", "dashboard"]
 navbar:
   title: "My Website"
   left:
@@ -6,5 +8,3 @@ navbar:
       href: index.html
     - text: "About"
       href: webpage.html
-output:
-  html_document:
