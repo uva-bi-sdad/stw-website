@@ -1,0 +1,134 @@
+---
+title: "Untitled"
+author: "--"
+date: "5/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+libraries
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+con <- RPostgreSQL::dbConnect(drv = RPostgreSQL::PostgreSQL(),
+                              dbname = "sdad",
+                              host = "postgis1",
+                              port = 5432,
+                              user = Sys.getenv(x = "DB_USR"),
+                              password = Sys.getenv(x = "DB_PWD"))
+
+
+skills_va <- RPostgreSQL::dbGetQuery( conn = con,
+                                statement = "SELECT *
+                                FROM bgt_job.skills_va
+                                  ")
+
+cat_skills <- read.csv( "/home/cpm9w/test_symlink/skills/categories_scf_sc_skills.csv")
+
+job_skills_va <- read.csv("~/STW/BGT/va_go_regions/va_go_bgt/job_skills_va_region.csv")
+
+
+# never opens this: FROM bgt_job.skill
+```
+
+Add skillcluster family
+```{r}
+#
+skills_va <- skills_va %>% left_join(cat_skills %>% select(skill, skillclusterfamily), by= "skill")
+
+```
+
+join skills with jobs
+
+```{r}
+job_skill_list_va <- left_join(job_skills_va, skills_va, by= "id")
+
+length(unique(job_skills_va$id))
+length(unique(job_skill_list_va$id))
+
+library(readr)
+#write_csv(job_skill_list_va, "~/STW/BGT/va_go_regions/va_go_bgt/job_skill_list_va.csv")
+#write for app 
+#write_csv(job_skill_list_va, "~/STW/BGT/va_go_regions/va_go_bgt/job_skill_list_va.csv")
+
+
+#open
+job_skill_list_va <- read.csv("~/STW/BGT/va_go_regions/va_go_bgt/job_skill_list_va.csv")
+
+```
+
+density of skills by region
+```{r}
+library(tidyverse)
+library(treemap)
+library(rgeos)
+library(sf)
+library(shiny)
+library(shinythemes)
+library(leaflet)
+library(DT)
+library(scales)
+library(htmltools)
+
+library(dplyr)
+library(shiny)
+library(devtools)
+library(readr)
+library(collapsibleTree)
+library(treemap)
+library(stringr)
+library(viridis)
+library(hrbrthemes)
+library(d3treeR)
+library(ggridges)
+library(ggplot2)
+library(d3Tree)
+library(stringr)
+library(viridisLite)
+library(htmlwidgets)
+library(grid)
+library(gridSVG)
+library(lattice)
+library(gridSVG)
+
+job_skill_list_va$num <- 1 
+
+R1 <- treemap(job_skill_list_va %>% dplyr::filter(va_region == 1) ,
+                     index=c("skillclusterfamily", "skillcluster"),
+                     vSize="num",
+                     vColor="minsalary",
+                     type="value",
+                     fun.aggregate = 'mean',
+                     palette = "Spectral",
+                     overlap.labels =1,
+                     title="Skills (specialized) per Region in VA, 2019",
+                     title.legend = "Average Salary per year",
+                     na.rm = TRUE )
+        
+        
+        d3tree2( R1 ,  rootname = "Skills" )
+```
+
+```{r}
+R7 <- treemap(job_skill_list_va %>% dplyr::filter(va_region == 7) ,
+                     index=c("skillclusterfamily", "skillcluster"),
+                     vSize="num",
+                     vColor="minsalary",
+                     type="value",
+                     fun.aggregate = 'mean',
+                     palette = "Spectral",
+                     overlap.labels =1,
+                     title="Skills (specialized) per Region in VA, 2019",
+                     title.legend = "Average Salary per year",
+                     na.rm = TRUE )
+        
+        
+        d3tree2( R7 ,  rootname = "Skills" )
+```
+

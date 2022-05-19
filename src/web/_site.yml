@@ -8,3 +8,8 @@ navbar:
       href: index.html
     - text: "About"
       href: webpage.html
+    - text: "Skills"
+      menu:
+        - text: "VA Go Region 1"
+          href: index.html
+        - text: "VA Go Region 2"
