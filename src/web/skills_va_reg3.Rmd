@@ -1,0 +1,42 @@
+---
+title: "Skill density in VA GO Region 3"
+output: html_document
+toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Figures
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hide'}
+library(dplyr)
+library(readr)
+library(tidyverse)
+library(treemap)
+library(d3treeR)
+
+#data
+data_skills_scf_sc_s_va_region <- read_csv("~/STW/BGT/va_go_regions/va_go_bgt/data_skills_scf_sc_s_va_region.csv")
+
+
+Reg3 <- treemap(data_skills_scf_sc_s_va_region %>% dplyr::filter(va_region == 3) ,
+                     index=c("skillclusterfamily", "skillcluster", "skill" ),
+                     vSize="num_skills",
+                     vColor="minsalary",
+                     type="value",
+                     fun.aggregate = 'mean',
+                     palette = "Spectral",
+                     overlap.labels =1,
+                     title="Skills (specialized) per Region in VA, 2019",
+                     title.legend = "Average Associated Salary per year",
+                     na.rm = TRUE )
+```
+
+
+```{r, echo=FALSE}
+d3tree2( Reg3 ,  rootname = "Skills" )
+```

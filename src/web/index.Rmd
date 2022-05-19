@@ -2,4 +2,7 @@
 title: "My Website"
 ---
     
-Hello, Website! Welcome to the world.
+This repository includes the information of job ads and skills for the State of Virginia.
+
+The source of information is Burning Glass Technology for 2019. 
+
