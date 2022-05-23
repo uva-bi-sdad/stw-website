@@ -6,26 +6,6 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Skill Density"
-      menu:
-        - text: "VA Go Region 1"
-          href: skills_va_reg1.html
-        - text: "VA Go Region 2"
-          href: skills_va_reg2.html
-        - text: "VA Go Region 3"
-          href: skills_va_reg3.html
-        - text: "VA Go Region 4"
-          href: skills_va_reg4.html
-        - text: "VA Go Region 5"
-          href: skills_va_reg5.html
-        - text: "VA Go Region 6"
-          href: skills_va_reg6.html
-        - text: "VA Go Region 7"
-          href: skills_va_reg7.html
-        - text: "VA Go Region 8"
-          href: skills_va_reg8.html
-        - text: "VA Go Region 9"
-          href: skills_va_reg9.html
     - text: "Job Ads"
       menu:
         - text: "VA GO Region 1"
@@ -46,5 +26,25 @@ navbar:
           href: jobs_va_reg8.html
         - text: "VA GO Region 9"
           href: jobs_va_reg9.html
+    - text: "Skill Density"
+      menu:
+        - text: "VA Go Region 1"
+          href: skills_va_reg1.html
+        - text: "VA Go Region 2"
+          href: skills_va_reg2.html
+        - text: "VA Go Region 3"
+          href: skills_va_reg3.html
+        - text: "VA Go Region 4"
+          href: skills_va_reg4.html
+        - text: "VA Go Region 5"
+          href: skills_va_reg5.html
+        - text: "VA Go Region 6"
+          href: skills_va_reg6.html
+        - text: "VA Go Region 7"
+          href: skills_va_reg7.html
+        - text: "VA Go Region 8"
+          href: skills_va_reg8.html
+        - text: "VA Go Region 9"
+          href: skills_va_reg9.html
     - text: "Certifications"
       href: certifications_va_regions.html
