@@ -1,0 +1,62 @@
+---
+title: "Untitled"
+author: "--"
+date: "5/23/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+con <- RPostgreSQL::dbConnect(drv = RPostgreSQL::PostgreSQL(),
+                              dbname = "sdad",
+                              host = "postgis1",
+                              port = 5432,
+                              user = Sys.getenv(x = "DB_USR"),
+                              password = Sys.getenv(x = "DB_PWD"))
+
+
+```
+
+```{r}
+main.va <- RPostgreSQL::dbGetQuery(conn = con,
+                                statement = "SELECT id, jobdate, occfam, occfamname, state, onet, onetname, sector, sectorname, fips
+                                     FROM bgt_job.table_main_va_2019_access
+                               ")
+```
+
+
+```{r}
+cert <- RPostgreSQL::dbGetQuery(conn = con,
+                                statement = "SELECT *
+                               FROM bgt_job.cert
+                               WHERE jobdate >= '2019-01-01' AND jobdate <= '2019-12-31'
+                               ")
+```
+
+
+```{r}
+cert_num <- cert %>% group_by(id) %>% summarize( cert_n= n())
+
+#join cert to jobs
+
+main.va.cert <- main.va %>% left_join(cert, by="id")
+
+table_jobs <- main %>% group_by(occfam) %>% summarise(total= n()  ) %>% arrange(total)
+table_cert <- main %>% group_by(occfam) %>% filter(!is.na(cert_n)) %>%  summarise(cer_total= n() ) %>% arrange(cer_total)
+```
+
+
+```{r}
+### without Driver's License or Security Clearance
+
+cert_num_nodriv_nosec <- cert %>% filter(certification != "Driver's License") %>% filter(certification != "Security Clearance")  %>%  group_by(id) %>% summarize( cert_n_nodriv_nosec= n())
+main <- main %>% left_join(cert_num_nodriv_nosec, by="id")
+
+#tables
+table_cert_nodriv_nosec <- main %>% group_by(occfam) %>% filter(!is.na(cert_n_nodriv_nosec)) %>%  summarise(cer_total_nodriv_nosec= n() ) %>% arrange(cer_total_nodriv_nosec)
+
+```
+

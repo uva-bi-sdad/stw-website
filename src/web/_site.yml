@@ -28,3 +28,23 @@ navbar:
           href: skills_va_reg8.html
         - text: "VA Go Region 9"
           href: skills_va_reg9.html
+    - text: "Job Ads"
+      menu:
+        - text: "VA GO Region 1"
+          href: jobs_va_reg1.html
+        - text: "VA GO Region 2"
+          href: jobs_va_reg2.html
+        - text: "VA GO Region 3"
+          href: jobs_va_reg3.html
+        - text: "VA GO Region 4"
+          href: jobs_va_reg4.html
+        - text: "VA GO Region 5"
+          href: jobs_va_reg5.html
+        - text: "VA GO Region 6"
+          href: jobs_va_reg6.html
+        - text: "VA GO Region 7"
+          href: jobs_va_reg7.html
+        - text: "VA GO Region 8"
+          href: jobs_va_reg8.html
+        - text: "VA GO Region 9"
+          href: jobs_va_reg9.html

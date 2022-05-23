@@ -10,7 +10,6 @@ toc_float:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Figures
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hide'}
 library(dplyr)
@@ -38,5 +37,15 @@ Reg5 <- treemap(data_skills_scf_sc_s_va_region %>% dplyr::filter(va_region == 5)
 
 
 ```{r, echo=FALSE}
+#knitr::include_graphics("GO-VA-Map.png")
+
 d3tree2( Reg5 ,  rootname = "Skills" )
+
 ```
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("legend_salary.png")
+```
+
+
+Source: Burning Glass Technology, 2019. Skill Taxonomy.

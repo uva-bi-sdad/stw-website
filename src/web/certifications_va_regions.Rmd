@@ -1,0 +1,58 @@
+---
+title: "Certification Density in VA GO Regions"
+output: html_document
+toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hide'}
+library(dplyr)
+library(readr)
+library(tidyverse)
+library(treemap)
+library(d3treeR)
+
+
+#data
+#data_skills_scf_sc_s_va_region <- read_csv("~/STW/BGT/va_go_regions/va_go_bgt/data_skills_scf_sc_s_va_region.csv")
+#data_jobs_va_region <- read_csv("~/STW/BGT/va_go_regions/va_go_bgt/data_jobs_va_region.csv")
+data_cert_va_region <- read_csv("~/STW/BGT/va_go_regions/va_go_bgt/data_cert_va_region.csv")
+
+
+cert_regions <- treemap(data_cert_va_region ,
+                     index=c("va_region", "occfamname", "onetname", "certification" ),
+                     vSize="num",
+                     vColor="salary",
+                     type="value",
+                     fun.aggregate = 'mean',
+                     palette = "Spectral",
+                     overlap.labels = 1,
+                     title="Certification Density per Region in VA, 2019",
+                     title.legend = "Average Salary per year",
+                     na.rm = TRUE
+        )
+```
+
+
+```{r, echo=FALSE,  message=FALSE, fig.show='hide', warning=FALSE}
+#knitr::include_graphics("GO-VA-Map.png")
+
+d3tree2( cert_regions ,  rootname = "VA GO Region" )
+
+```
+
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("legend_salary.png")
+```
+
+
+Source: Burning Glass Technology, 2019.
+

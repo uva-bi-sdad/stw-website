@@ -1,0 +1,74 @@
+---
+title: "Untitled"
+author: "--"
+date: "5/23/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+con <- RPostgreSQL::dbConnect(drv = RPostgreSQL::PostgreSQL(),
+                              dbname = "sdad",
+                              host = "postgis1",
+                              port = 5432,
+                              user = Sys.getenv(x = "DB_USR"),
+                              password = Sys.getenv(x = "DB_PWD"))
+
+
+```
+
+```{r}
+main.va <- RPostgreSQL::dbGetQuery(conn = con,
+                                statement = "SELECT id, jobdate, occfam, occfamname, state, onet, onetname, sector, sectorname, fips
+                                     FROM bgt_job.table_main_va_2019_access
+                               ")
+```
+
+
+```{r}
+cert <- RPostgreSQL::dbGetQuery(conn = con,
+                                statement = "SELECT *
+                               FROM bgt_job.cert
+                               WHERE jobdate >= '2019-01-01' AND jobdate <= '2019-12-31'
+                               ")
+```
+
+
+```{r}
+cert_num <- cert %>% group_by(id) %>% summarize( cert_n= n())
+
+#join cert to jobs
+main.va.cert <- main.va %>% left_join(cert, by="id")
+
+#join va_go_region
+va_region <- readxl::read_excel("/home/cpm9w/test_symlink/va_go_region_last.xlsx")
+va_region$fips <- as.character(va_region$fips)
+
+main.va.cert.reg <- main.va.cert %>% left_join(va_region, by="fips")
+  
+```
+
+
+```{r}
+### without Driver's License or Security Clearance
+
+main.va.cert.reg.rev <- main.va.cert.reg %>% filter(certification != "Driver's License") %>% filter(certification != "Security Clearance")
+
+data_cert_va_region <- main.va.cert.reg.rev %>% select(id, va_region, occfamname, onetname, certification, salary) %>% 
+  mutate(num=1)
+
+#correct salary
+data_cert_va_region <- data_cert_va_region %>% 
+  mutate(salary = gsub("\\$", "", salary)) %>% 
+  mutate(salary = gsub(",", "", salary)) %>% 
+  mutate(salary = as.numeric(salary))
+
+#save information for treemap
+write_csv(data_cert_va_region, "~/STW/BGT/va_go_regions/va_go_bgt/data_cert_va_region.csv")
+
+
+```
+
