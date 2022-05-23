@@ -77,7 +77,7 @@ salary_Reg1 <- ggplot(data_jobs_va_region %>% filter(va_region== 1, !is.na(occfa
 
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message = FALSE}
 salary_Reg1
 ```
 

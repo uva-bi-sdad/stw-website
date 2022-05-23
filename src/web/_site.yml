@@ -48,3 +48,5 @@ navbar:
           href: jobs_va_reg8.html
         - text: "VA GO Region 9"
           href: jobs_va_reg9.html
+    - text: "Certifications"
+      href: certifications_va_regions.html
