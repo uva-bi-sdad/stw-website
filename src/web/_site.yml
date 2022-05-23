@@ -6,8 +6,6 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: webpage.html
     - text: "Skill Density"
       menu:
         - text: "VA Go Region 1"
