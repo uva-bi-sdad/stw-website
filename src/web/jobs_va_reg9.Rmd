@@ -39,7 +39,7 @@ job_Reg1 <- treemap(data_jobs_va_region %>% dplyr::filter(va_region == 9) ,
 ```
 
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hide'}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hide', out.width = '100%'}
 #knitr::include_graphics("GO-VA-Map.png")
 
 d3tree2( job_Reg1 ,  rootname = "Job Ads" )
@@ -50,7 +50,13 @@ d3tree2( job_Reg1 ,  rootname = "Job Ads" )
 ```{r, echo=FALSE, out.width = '80%'}
 knitr::include_graphics("legend_salary.png")
 ```
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
+# Distribution of salaries in VA GO Region 9
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hide'}
 library(dplyr)
@@ -63,11 +69,11 @@ library(ggplot2)
 library(viridis)
 
 
-salary_Reg1 <- ggplot(data_jobs_va_region %>% filter(va_region== 1, !is.na(occfamname_corr)), aes(x = salary, y = occfamname_corr, fill = ..x..)) +
+salary_Reg9 <- ggplot(data_jobs_va_region %>% filter(va_region== 1, !is.na(occfamname_corr)), aes(x = salary, y = occfamname_corr, fill = ..x..)) +
             #stat_density_ridges(quantile_lines = TRUE) +
             geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
-            scale_fill_viridis(name = "Salary", option = "D") +
-            labs(title = 'Distribution of salaries by Occupation Group, 2019', x ="Salary (dollars)", y = "Occupation group") +
+            scale_fill_viridis(name = "Salary", option = "D", direction = -1) +
+            labs(title = '', x ="Salary (dollars)", y = "Occupation group") +
             #theme_ipsum() +
             theme(
                 legend.position="none",
@@ -77,8 +83,8 @@ salary_Reg1 <- ggplot(data_jobs_va_region %>% filter(va_region== 1, !is.na(occfa
 
 ```
 
-```{r, echo=FALSE, message = FALSE}
-salary_Reg1
+```{r, echo=FALSE, message = FALSE, out.width = '90%'}
+salary_Reg9
 ```
 
 

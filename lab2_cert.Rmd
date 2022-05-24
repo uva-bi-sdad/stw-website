@@ -66,6 +66,7 @@ data_cert_va_region <- data_cert_va_region %>%
   mutate(salary = gsub(",", "", salary)) %>% 
   mutate(salary = as.numeric(salary))
 
+
 #save information for treemap
 write_csv(data_cert_va_region, "~/STW/BGT/va_go_regions/va_go_bgt/data_cert_va_region.csv")
 
