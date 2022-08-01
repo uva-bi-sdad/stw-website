@@ -31,7 +31,7 @@ job_Reg1 <- treemap(data_jobs_va_region %>% dplyr::filter(va_region == 1) ,
                      type="value",
                      fun.aggregate = 'mean',
                      palette = "Spectral",
-                     overlap.labels = 1,
+                     overlap.labels = 0.5,
                      title="Job Ads Density per Region in VA, 2019",
                      title.legend = "Average Salary per year",
                      na.rm = TRUE

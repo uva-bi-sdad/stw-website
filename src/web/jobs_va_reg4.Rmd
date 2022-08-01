@@ -69,7 +69,7 @@ library(ggplot2)
 library(viridis)
 
 
-salary_Reg4 <- ggplot(data_jobs_va_region %>% filter(va_region== 1, !is.na(occfamname_corr)), aes(x = salary, y = occfamname_corr, fill = ..x..)) +
+salary_Reg4 <- ggplot(data_jobs_va_region %>% filter(va_region== 4, !is.na(occfamname_corr)), aes(x = salary, y = occfamname_corr, fill = ..x..)) +
             #stat_density_ridges(quantile_lines = TRUE) +
             geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
             scale_fill_viridis(name = "Salary", option = "D", direction = -1) +
