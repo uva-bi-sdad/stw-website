@@ -11,7 +11,7 @@
 
 
 
-<title>General Information</title>
+<title>Virginia Case Study: The Skills and Certifications in Job-ads</title>
 
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -245,7 +245,7 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Job Ads
+    Job-ad Density
      
     <span class="caret"></span>
   </a>
@@ -316,7 +316,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li>
-  <a href="certifications_va_regions.html">Certifications</a>
+  <a href="certifications_va_regions.html">Certification Density</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -330,16 +330,40 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">General Information</h1>
+<h1 class="title toc-ignore">Virginia Case Study: The Skills and Certifications in Job-ads</h1>
 
 </div>
 
 
-<p>This repository includes the information of job ads, certifications, and skills for the State of Virginia.</p>
-<p>The information source is Burning Glass Technology (BGT) for 2019. BGT includes more than 1,026,0000 job ads for 2019, with almost 470,000 certifications (1,684 unique certifications) across all occupations. In addition, the data base contains more than 10 million skills.</p>
-<p>The information is presented for nine distinct regions across Virginia, named as the VA GO Regions according to the Virginia Growth and Opportunity Board. These regions share similarities of geography, workforce, and economic development.</p>
-<p><img src="GO-VA-Map.png" width="80%" /></p>
-<p>Source: Virginia Growth and Opportunity Board</p>
+<p><img src="va_go_regions_2.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Interactive treemaps are used to explore employer skill and certification demands across the nine <a href="https://govirginia.org/about/">Virginia Growth and Opportunity Regions</a> (GO Regions) using job-ads. Virginia has a diverse array of industries, from computer services and cybersecurity in Region 7, ship building and repair in Region 5, and energy and minerals in Region 1.</p>
+<p>The first tab, Job-ad Density, displays Burning Glass Technology job-ads organized by the <a href="https://www.bls.gov/oes/current/oes_stru.htm">Bureau of Labor Statistics’ 23 Major Occupation Groups</a> (MOG) for each GO Region using treemaps. The size of the rectangle is a function of the number of job-ads and the color indicates the average salary. Clicking on one of the major occupations groups displays the job-ad treemap for the occupations within the MOG. Below the treemap are salary density plots for each of the major occupation groups.</p>
+<p>The second tab, Skill Density, displays treemaps organized by the Burning Glass Technology skill taxonomy for each GO Region. The skills listed in job-ads are canonicalized to improve categorization which allows each skill to be categorized into one of the 657 skill clusters which is a grouping of skills that have similar functionality and/or frequently appear together in job-ads and one of the 28 skill cluster families. The most general classification of the Burning Glass Technologies skill taxonomy is the skill cluster family, each skill and skill cluster belong to exactly one family.</p>
+<ul>
+<li><p>The first layer of the treemap displays the skill cluster family where the size of the rectangle is a function of the number of job-ads requesting skills in that particular skill cluster family and the color indicates the average salary.</p></li>
+<li><p>Clicking on a skill cluster family brings up the second layer of the treemap, skill clusters.</p></li>
+<li><p>Clicking on a skill cluster brings up the third layer of the treemap, skills.</p></li>
+</ul>
+<p>The third tab, Certification Density, displays the certificates in job-ads by organized by GO Region using treemaps. A certification is a nondegree credential awarded by a certification body based on an individual demonstrating through an examination process they have acquired the knowledge, skills, and abilities to perform a specific job. The examination can be either written, oral, or performance-based (<a href="https://nces.ed.gov/surveys/gemena/definitions.asp">National Center for Education Statistics</a>). The Department of Labor’s <a href="https://www.careeronestop.org/Developers/Data/certifications.aspx">CareerOneStop</a> contains 11,556 unique industry-recognized certifications.</p>
+<ul>
+<li><p>The first layer of the treemap displays the number of job-ads requesting certifications by GO Region.</p></li>
+<li><p>The second layer of the treemap displays the major occupation groups requesting certifications.</p></li>
+<li><p>The third layer of the treemap displays the occupations within the major occupation group requesting certifications.</p></li>
+<li><p>The fourth layer displays the certifications requested in job-ads for that occupation.</p></li>
+</ul>
+<!---
+
+This repository includes the information of job ads, certifications, and skills for the State of Virginia.
+
+The information source is Burning Glass Technology (BGT) for 2019. BGT includes more than 1,026,0000 job ads for 2019, with almost 470,000 certifications (1,684 unique certifications) across all occupations. In addition, the data base contains more than 10 million skills. 
+
+The information is presented for nine distinct regions across Virginia, named as the VA GO Regions according to the Virginia Growth and Opportunity Board.  These regions share similarities of geography, workforce, and economic development.  
+knitr::include_graphics("GO-VA-Map.png")
+Source: Virginia Growth and Opportunity Board 
+
+<img src="va_go_regions_new.png" width="80%" />
+
+-->
 
 
 

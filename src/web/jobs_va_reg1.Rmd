@@ -1,5 +1,5 @@
 ---
-title: "Job Ads density in VA GO Region 1"
+title: "Job-ad Density in VA GO Region 1"
 output: html_document
 toc_float:
       collapsed: false
@@ -32,7 +32,7 @@ job_Reg1 <- treemap(data_jobs_va_region %>% dplyr::filter(va_region == 1) ,
                      fun.aggregate = 'mean',
                      palette = "Spectral",
                      overlap.labels = 0.5,
-                     title="Job Ads Density per Region in VA, 2019",
+                     title="Job-ad Density in VA GO Region 1",
                      title.legend = "Average Salary per year",
                      na.rm = TRUE
         )
@@ -47,7 +47,7 @@ d3tree2( job_Reg1 ,  rootname = "Job Ads" )
 ```
 
 
-```{r, echo=FALSE, out.width = '80%'}
+```{r, echo=FALSE, out.width = '80%', fig.align='center'}
 knitr::include_graphics("legend_salary.png")
 ```
 <br/>
@@ -56,7 +56,7 @@ knitr::include_graphics("legend_salary.png")
 <br/>
 <br/>
 
-# Distribution of salaries in VA GO Region 1
+# Distribution of Salaries in VA GO Region 1
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hide'}
 library(dplyr)
@@ -73,7 +73,7 @@ salary_Reg1 <- ggplot(data_jobs_va_region %>% filter(va_region== 1, !is.na(occfa
             #stat_density_ridges(quantile_lines = TRUE) +
             geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
             scale_fill_viridis(name = "Salary", option = "D", direction = -1) +
-            labs(title = '', x ="Salary (dollars)", y = "Occupation group") +
+            labs(title = '', x ="Salary (dollars)", y = "Major Occupation Group") +
             #theme_ipsum() +
             theme(
                 legend.position="none",
@@ -92,5 +92,5 @@ salary_Reg1
 ```
 
 
-Source: Burning Glass Technology, 2019.
+Source: Burning Glass Technology Job-ads (2019)
 

@@ -54,5 +54,5 @@ knitr::include_graphics("legend_salary.png")
 ```
 
 
-Source: Burning Glass Technology, 2019.
+Source: Burning Glass Technology Job-ads (2019)
 

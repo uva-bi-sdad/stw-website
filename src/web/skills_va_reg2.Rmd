@@ -1,5 +1,5 @@
 ---
-title: "Skill density in VA GO Region 2"
+title: "Skill Taxonomy Density in VA GO Region 2"
 output: html_document
 toc_float:
       collapsed: false
@@ -40,13 +40,13 @@ Reg2 <- treemap(data_skills_scf_sc_s_va_region %>% dplyr::filter(va_region == 2)
 ```{r, echo=FALSE}
 #knitr::include_graphics("GO-VA-Map.png")
 
-d3tree2( Reg2 ,  rootname = "Skills" )
+d3tree2( Reg2 ,  rootname = "Skill taxonomy" )
 
 ```
 
-```{r, echo=FALSE, out.width = '80%'}
+```{r, echo=FALSE, out.width = '80%', fig.align='center'}
 knitr::include_graphics("legend_salary.png")
 ```
 
 
-Source: Burning Glass Technology, 2019. Skill Taxonomy.
+Source: Burning Glass Technology Job-ads (2019)

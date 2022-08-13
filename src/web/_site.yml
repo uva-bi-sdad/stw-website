@@ -6,7 +6,7 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Job Ads"
+    - text: "Job-ad Density"
       menu:
         - text: "VA GO Region 1"
           href: jobs_va_reg1.html
@@ -46,5 +46,5 @@ navbar:
           href: skills_va_reg8.html
         - text: "VA Go Region 9"
           href: skills_va_reg9.html
-    - text: "Certifications"
+    - text: "Certification Density"
       href: certifications_va_regions.html
